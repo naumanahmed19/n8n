@@ -67,6 +67,7 @@ const TestDefinitionEditView = async () =>
 	await import('./views/TestDefinition/TestDefinitionEditView.vue');
 const TestDefinitionRootView = async () =>
 	await import('./views/TestDefinition/TestDefinitionRootView.vue');
+const UserDashboardView = async () => await import('./views/UserDashboardView.vue');
 
 function getTemplatesRedirect(defaultRedirect: VIEWS[keyof VIEWS]): { name: string } | false {
 	const settingsStore = useSettingsStore();
@@ -731,6 +732,29 @@ export const routes: RouteRecordRaw[] = [
 			telemetry: {
 				pageCategory: 'auth',
 			},
+		},
+	},
+
+	{
+		path: '/variablesc',
+		name: VIEWS.VARIABLES,
+		components: {
+			default: VariablesView,
+			sidebar: MainSidebar,
+		},
+		meta: { middleware: ['authenticated'] },
+	},
+	{
+		path: '/dashboard',
+		name: VIEWS.USER_DASHBOARD,
+		components: {
+			default: UserDashboardView,
+			header: MainHeader,
+			sidebar: MainSidebar,
+		},
+		meta: {
+			middleware: ['authenticated'],
+		
 		},
 	},
 	...projectsRoutes,

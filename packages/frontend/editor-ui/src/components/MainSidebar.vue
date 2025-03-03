@@ -76,6 +76,14 @@ const mainMenuItems = computed(() => [
 		available: settingsStore.isCloudDeployment && hasPermission(['instanceOwner']),
 	},
 	{
+		id: 'dashboard',
+		icon: 'tachometer-alt',
+		label: i18n.baseText('mainSidebar.dashboard'),
+		position: 'top',
+		available: true,
+		route: { to: { name: VIEWS.USER_DASHBOARD } },
+	},
+	{
 		// Link to in-app templates, available if custom templates are enabled
 		id: 'templates',
 		icon: 'box-open',
